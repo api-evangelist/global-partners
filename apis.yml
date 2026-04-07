@@ -1,7 +1,10 @@
 aid: global-partners
-url: https://raw.githubusercontent.com/api-evangelist/global-partners/refs/heads/main/apis.yml
+url: 
+  https://raw.githubusercontent.com/api-evangelist/global-partners/refs/heads/main/apis.yml
 modified: '2026-03-21'
 apis: []
 common:
   - type: Website
     url: https://www.global-partners.com
+description: >-
+  We invest in the companies of tomorrow...today.
