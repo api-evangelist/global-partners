@@ -7,6 +7,17 @@ description: >-
   crude oil, and propane across the Northeast United States through an
   integrated network of terminals, gas stations, and convenience stores.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - none
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
