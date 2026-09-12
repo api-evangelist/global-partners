@@ -1,0 +1,61 @@
+generated: '2026-09-12'
+method: derived
+source: >-
+  openapi/ (derived from https://www.globalp.com/wp-json/), live response headers observed 2026-09-12, and
+  a search of globalp.com for published compliance or certification claims
+note: >-
+  Global Partners LP publishes no compliance program page, no trust center and no certification claims
+  reachable without a login — probe of trust.globalp.com does not resolve, and probe-security-programs.py
+  returned vdp=none trust=none. No Compliance pointer is therefore emitted. The entries below assert only
+  what the served contract demonstrably does or does not do. Global Partners' market — liquid fuels
+  wholesale, terminals and retail — has no API domain standard the contract could declare, so
+  domain_standard_conformance is genuinely not applicable here rather than failed; nothing is invented to
+  fill the slot.
+conformance:
+- id: oauth2
+  conforms: false
+  evidence: >-
+    No oauth2 securityScheme anywhere in the contract. The only scheme is HTTP Basic with a WordPress
+    application password. (A separate RFC 8414 authorization-server document exists at
+    digitalassets.globalp.com, but that is the Bynder DAM tenant's platform, not this API.)
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returns 404 on www.globalp.com and globalp.com.
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    Errors use the WordPress envelope {code,message,data.status} with content-type application/json, not
+    application/problem+json. Observed on GET /wp/v2/sw_terminal/99999999.
+- id: rfc8288
+  conforms: true
+  evidence: >-
+    Collection responses return a Link header with rel="next"/"prev" and expose it via
+    access-control-expose-headers. Observed on GET /wp/v2/sw_terminal?per_page=1.
+- id: pagination
+  conforms: true
+  evidence: >-
+    page/per_page with a declared 1-100 bound plus offset, and X-WP-Total / X-WP-TotalPages count headers.
+    Declared in the route table and observed live.
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header is accepted or documented. See conventions/global-partners-conventions.yml.
+- id: rfc8414
+  conforms: partial
+  evidence: >-
+    https://digitalassets.globalp.com/.well-known/oauth-authorization-server returns a valid Authorization
+    Server Metadata document (saved verbatim in well-known/). It governs the Bynder-operated Global Partners
+    Brand Portal on a Global Partners subdomain, not the WordPress REST API profiled here.
+- id: rfc9116
+  conforms: false
+  evidence: /.well-known/security.txt returns 404 on every Global Partners host probed.
+- id: cors
+  conforms: true
+  evidence: >-
+    access-control-allow-headers and access-control-expose-headers are returned on every REST response,
+    making the surface browser-callable cross-origin.
+domain_standards: []
+domain_standard_note: >-
+  Probed for a declared domain standard in the contract and found none, which is expected: no SCIM URN, no
+  OData $metadata, no OpenRTB, no Sparkplug topic namespace, no HL7/X12/EDIFACT/ISO-20022 message type, no
+  OAI-PMH verb. Downstream fuel distribution exchanges data over EDI and PIDX, but neither appears anywhere
+  in a public Global Partners contract and neither is asserted here.

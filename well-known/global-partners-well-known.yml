@@ -1,0 +1,163 @@
+generated: '2026-09-12'
+method: probed
+source: live HTTPS probes of the /.well-known/ surface on every host the record knows
+note: >-
+  Probed six Global Partners hosts. The corporate site (www.globalp.com / globalp.com) publishes no
+  /.well-known/ discovery documents at all — every path 404s, and the 404 body is the WordPress theme's
+  HTML error page. connect.globalp.com (the GlobalCONNECT customer portal, ASP.NET) and ir.globalp.com
+  (the Q4 Inc investor-relations platform) both answer 200 to EVERY /.well-known/ path with a catch-all
+  body — the portal login HTML and the string "Invalid key" respectively — so those are soft-200 shells,
+  not documents, and are recorded as misses. ONE real document was found: digitalassets.globalp.com, the
+  Global Partners Brand Portal, serves a valid RFC 8414 OAuth 2.0 Authorization Server Metadata document
+  whose issuer is itself. That host is a Bynder DAM tenant running under a Global Partners subdomain, so
+  the document is served by a Global Partners host but the authorization server is the vendor's platform,
+  not a Global Partners product. The non-well-known discovery surface that does exist on the corporate
+  site — robots.txt, the Yoast sitemap index, and the WordPress REST API root — is recorded below.
+hosts:
+- host: www.globalp.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: globalp.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: connect.globalp.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: Soft 200 — body is the GlobalCONNECT portal login HTML, not a document. Treated as a miss.
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: Soft 200 — portal login HTML. Treated as a miss.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: Soft 200 — portal login HTML. Treated as a miss.
+  - path: /.well-known/api-catalog
+    status: 200
+    note: Soft 200 — portal login HTML. Treated as a miss.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    note: Soft 200 — portal login HTML. Treated as a miss.
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: Soft 200 — portal login HTML, not an AgentCard object. Rejected per the STEP 0b SPA-shell rule.
+  - path: /.well-known/agent.json
+    status: 200
+    note: Soft 200 — portal login HTML, not an AgentCard object. Rejected.
+- host: ir.globalp.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    note: Soft 200 — body is the 11-byte string "Invalid key" from the Q4 Inc IR platform. Treated as a miss.
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: Soft 200 — "Invalid key". Treated as a miss.
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: Soft 200 — "Invalid key". Treated as a miss.
+  - path: /.well-known/api-catalog
+    status: 200
+    note: Soft 200 — "Invalid key". Treated as a miss.
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    note: Soft 200 — "Invalid key". Treated as a miss.
+  - path: /.well-known/agent-card.json
+    status: 200
+    note: Soft 200 — "Invalid key", not an AgentCard object. Rejected.
+  - path: /.well-known/agent.json
+    status: 200
+    note: Soft 200 — "Invalid key". Rejected.
+- host: careers.globalp.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: digitalassets.globalp.com
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: global-partners-oauth-authorization-server.json
+    note: >-
+      Real RFC 8414 document. issuer https://digitalassets.globalp.com; authorization, token, revocation
+      endpoints under /v6/authentication/oauth2/; jwks_uri /v6/authentication/.well-known/jwks.json;
+      grant types authorization_code, refresh_token, client_credentials; PKCE S256 supported. The host is
+      the Global Partners Brand Portal, a Bynder DAM tenant on a Global Partners subdomain.
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+other_discovery:
+- host: www.globalp.com
+  path: /robots.txt
+  status: 200
+  note: Yoast-generated. Crawl-delay 10, no disallows, points at /sitemap_index.xml.
+- host: www.globalp.com
+  path: /sitemap.xml
+  status: 200
+  note: Yoast sitemap index covering posts, pages, terminals, retail locations, properties and taxonomies.
+- host: www.globalp.com
+  path: /wp-json/
+  status: 200
+  note: >-
+    The WordPress REST API root discovery document — 335 routes across 18 namespaces. This is Global
+    Partners' only machine-readable API discovery surface, and it is what every file in openapi/ was
+    derived from.
+- host: www.globalp.com
+  path: /feed
+  status: 200
+  note: RSS 2.0 feed for the news and media section.
+- host: www.globalp.com
+  path: /llms.txt
+  status: 404
+- host: digitalassets.globalp.com
+  path: /v6/authentication/.well-known/jwks.json
+  status: 200
+  note: Live RSA JWKS for the Bynder-operated authorization server named above. Not saved — key material.
+- host: digitalassets.globalp.com
+  path: /api/v4/users/
+  status: 401
+  note: 'Bynder platform API on the tenant subdomain. Anonymous call returns: Invalid or expired token.'

@@ -1,0 +1,12 @@
+generated: '2026-09-12'
+method: searched
+source: https://www.globalp.com/what-we-offer and https://www.globalp.com/what-we-offer/globalconnect-portal
+plan_count: 0
+plans: []
+note: >-
+  Global Partners LP sells wholesale and retail fuel, terminal services and real estate — not API access.
+  There is no pricing page for any developer product, no plan tiers, no free tier and no metering. The
+  public WordPress REST API at www.globalp.com/wp-json is served with no commercial terms attached to it at
+  all. Commercial fuel customers transact through the GlobalCONNECT portal
+  (https://www.globalp.com/what-we-offer/globalconnect-portal), which is a customer login, not a priced API
+  product. Recording plan_count 0 with this note rather than omitting the file.

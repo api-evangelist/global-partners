@@ -1,0 +1,64 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Global Partners LP Fuel Brands API
+  version: 1.0.0
+x-generated: '2026-09-12'
+x-method: generated
+x-source: derived from the API Evangelist enrichment pass on all/global-partners
+extends: openapi/global-partners-sw-fuel-brand-api-openapi.yml
+actions:
+- target: $.info
+  description: Stamp API Evangelist enrichment provenance and record that the provider runs no developer program, so this
+    contract is operational reality rather than a published commitment.
+  update:
+    x-apievangelist-enriched: '2026-09-12'
+    x-api-evangelist-provider: global-partners
+    x-spec-provenance: derived-from-wordpress-route-table
+    x-provider-publishes-openapi: false
+    x-developer-program: false
+    x-support-url: https://www.globalp.com/contact-us
+- target: $.servers[0]
+  description: Record the edge stack and the fact that read access needs no credentials.
+  update:
+    x-public-read: true
+    x-edge:
+    - Cloudflare
+    - WP Engine
+    x-cache-control: max-age=600, must-revalidate
+- target: $.paths['/wp/v2/sw_fuel_brand']
+  description: Record the live collection size observed on 2026-09-12 and whether this is a Global Partners custom content
+    type or WordPress core.
+  update:
+    x-collection-count-observed: 20
+    x-observed-on: '2026-09-12'
+    x-custom-post-type: true
+- target: $.paths['/wp/v2/sw_fuel_brand'].get
+  description: Record that the collection read is anonymous and returns RFC 8288 pagination signals.
+  update:
+    x-auth-required: false
+    x-pagination-headers:
+    - X-WP-Total
+    - X-WP-TotalPages
+    - Link
+    x-per-page-max: 100
+- target: $.paths['/wp/v2/sw_fuel_brand'].post
+  description: 'Record that this write is capability-gated: an anonymous call returns 401.'
+  update:
+    x-auth-required: true
+    x-anonymous-status: 401
+    x-idempotent: false
+    x-reversible: undocumented
+- target: $.paths['/wp/v2/sw_fuel_brand'].delete
+  description: 'Record that this write is capability-gated: an anonymous call returns 401.'
+  update:
+    x-auth-required: true
+    x-anonymous-status: 401
+    x-idempotent: false
+    x-reversible: undocumented
+- target: $.paths['/wp/v2/sw_fuel_brand'].patch
+  description: 'Record that this write is capability-gated: an anonymous call returns 401.'
+  update:
+    x-auth-required: true
+    x-anonymous-status: 401
+    x-idempotent: false
+    x-reversible: undocumented

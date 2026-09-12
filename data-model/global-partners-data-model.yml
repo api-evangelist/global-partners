@@ -1,0 +1,143 @@
+generated: '2026-09-12'
+method: derived
+source: >-
+  https://www.globalp.com/wp-json/wp/v2/types (the provider's own post-type/taxonomy registry, fetched
+  2026-09-12) and the $ref / id-reference structure of openapi/
+note: >-
+  Global Partners publishes no object reference. This entity graph is read straight off the site's own
+  type registry, which declares exactly which taxonomies attach to which content type, plus the id-array
+  fields observed on live records. Counts are X-WP-Total values observed on 2026-09-12.
+entities:
+- name: Terminal
+  rest_base: sw_terminal
+  count: 157
+  description: A Global Partners liquid-energy terminal. The company's physical distribution network.
+  id_field: id
+  key_fields: [id, slug, title.rendered, link, status, date, modified]
+  relationships:
+  - type: has_many
+    target: State
+    via: sw_state
+  - type: has_many
+    target: Product
+    via: sw_product
+  - type: has_many
+    target: TerminalService
+    via: sw_service
+  - type: has_many
+    target: MethodOfSupply
+    via: sw_method_of_supply
+- name: RetailLocation
+  rest_base: sw_retail_location
+  count: 846
+  description: A Global Partners retail fuel and convenience site across the Alltown, Alltown Fresh, XtraMart and branded-dealer network.
+  id_field: id
+  key_fields: [id, slug, title.rendered, link, status, date, modified]
+  relationships:
+  - type: has_many
+    target: State
+    via: sw_state
+  - type: has_many
+    target: RetailBrand
+    via: sw_retail_brand
+  - type: has_many
+    target: FuelBrand
+    via: sw_fuel_brand
+  - type: has_many
+    target: FuelType
+    via: sw_fuel_type
+  - type: has_many
+    target: FoodOption
+    via: sw_food_option
+- name: RealEstateListing
+  rest_base: sw_property
+  count: 15
+  description: A property marketed by Global Partners' real-estate ventures business.
+  id_field: id
+  relationships:
+  - type: has_many
+    target: State
+    via: sw_state
+  - type: has_many
+    target: OwnershipStatus
+    via: sw_ownership_status
+  - type: has_many
+    target: ListingType
+    via: sw_listing_type
+  - type: has_many
+    target: SiteType
+    via: sw_site_type
+- name: Employee
+  rest_base: sw_employee
+  count: 30
+  description: A published leadership or employee profile.
+  id_field: id
+  relationships:
+  - type: has_many
+    target: BusinessSector
+    via: sw_business_sector
+- name: NewsPost
+  rest_base: posts
+  count: 91
+  description: A Global Partners news or media release.
+  id_field: id
+  relationships:
+  - type: has_many
+    target: Category
+    via: categories
+  - type: has_many
+    target: ContentType
+    via: content_type
+  - type: has_many
+    target: ContentTopic
+    via: content_topic
+  - type: has_many
+    target: ContentMediaType
+    via: content_media_type
+  - type: belongs_to
+    target: Author
+    via: author
+  - type: has_one
+    target: MediaItem
+    via: featured_media
+- name: Page
+  rest_base: pages
+  count: 67
+  description: A published website page. Hierarchical — pages reference a parent page.
+  id_field: id
+  relationships:
+  - type: belongs_to
+    target: Page
+    via: parent
+- name: MediaItem
+  rest_base: media
+  count: 523
+  description: A media-library item — image, PDF or document.
+  id_field: id
+  relationships:
+  - type: belongs_to
+    target: NewsPost
+    via: post
+taxonomies:
+- {name: State, rest_base: sw_state, terms: 31, applies_to: [Terminal, RetailLocation, RealEstateListing]}
+- {name: Product, rest_base: sw_product, terms: 25, applies_to: [Terminal]}
+- {name: TerminalService, rest_base: sw_service, terms: 4, applies_to: [Terminal]}
+- {name: MethodOfSupply, rest_base: sw_method_of_supply, terms: 6, applies_to: [Terminal]}
+- {name: RetailBrand, rest_base: sw_retail_brand, terms: 18, applies_to: [RetailLocation]}
+- {name: FuelBrand, rest_base: sw_fuel_brand, terms: 20, applies_to: [RetailLocation]}
+- {name: FuelType, rest_base: sw_fuel_type, terms: 5, applies_to: [RetailLocation]}
+- {name: FoodOption, rest_base: sw_food_option, terms: 0, applies_to: [RetailLocation]}
+- {name: OwnershipStatus, rest_base: sw_ownership_status, terms: 4, applies_to: [RealEstateListing]}
+- {name: ListingType, rest_base: sw_listing_type, terms: 2, applies_to: [RealEstateListing]}
+- {name: SiteType, rest_base: sw_site_type, terms: 3, applies_to: [RealEstateListing]}
+- {name: BusinessSector, rest_base: sw_business_sector, terms: 8, applies_to: [Employee]}
+- {name: Category, rest_base: categories, terms: 13, applies_to: [NewsPost]}
+- {name: ContentType, rest_base: content_type, terms: 2, applies_to: [NewsPost]}
+- {name: ContentTopic, rest_base: content_topic, terms: 7, applies_to: [NewsPost]}
+- {name: ContentMediaType, rest_base: content_media_type, terms: 4, applies_to: [NewsPost]}
+id_conventions:
+  form: integer
+  note: >-
+    All identifiers are WordPress integer post/term ids. They are not prefixed, not stable across content
+    migrations, and there is no external business key (no terminal code, no store number) exposed on the
+    public record — slug and link are the only human-stable handles.

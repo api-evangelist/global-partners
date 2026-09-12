@@ -1,0 +1,24 @@
+generated: '2026-09-12'
+method: probed
+source: >-
+  live unauthenticated responses from https://www.globalp.com/wp-json/wp/v2/ observed 2026-09-12; searched
+  globalp.com for any published limit and found none
+limit_count: 0
+limits: []
+response_headers: []
+exhaustion_status: null
+note: >-
+  Global Partners publishes no rate limits — there is no developer program, no terms of API use and no
+  documentation page of any kind for this surface. Live responses return no RateLimit-*, no X-RateLimit-*
+  and no Retry-After header; the only throttling signal in evidence is robots.txt Crawl-delay: 10, which
+  binds crawlers rather than API clients. The surface sits behind Cloudflare and WP Engine, so an
+  edge-level limit may exist and simply not be advertised — an agent has no published number to plan
+  against and should treat the 600-second cache-control window as the intended polling floor. Recording an
+  honest zero rather than omitting the file.
+observed:
+- header: cache-control
+  value: max-age=600, must-revalidate
+- header: x-cacheable
+  value: SHORT
+- header: robots.txt Crawl-delay
+  value: '10'

@@ -1,13 +1,27 @@
-generated: '2026-07-11'
+generated: '2026-09-12'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: www.globalp.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Sep 16 21:27:33 2026 GMT
+  cert_expires: Nov 15 07:19:02 2026 GMT
   hsts: true
   hsts_max_age: 31536000
+- host: api.globalp.com
+  https: true
+  tls_version: TLSv1.2
+  cert_subject: C=US, ST=Massachusetts, L=Waltham, O=Global Partners LP, CN=*.globalp.com
+  cert_issuer: C=US, O=DigiCert Inc, CN=DigiCert TLS RSA SHA256 2020 CA1
+  cert_expires: Mar 30 23:59:59 2024 GMT
+  cert_expired: true
+  chain_incomplete: true
+  hsts: false
+  note: Probed 2026-09-12 outside the apis.yml/servers[] host set because the hostname suggested an API. api.globalp.com resolves
+    to 34.233.44.177 and serves, over Apache, a static archived copy of a GitLab Community Edition sign-in page; every GitLab
+    API path (/api/v4/version, /api/v4/projects, /explore) returns an Apache 404, so there is no live API behind it. Its wildcard
+    certificate is genuinely Global Partners LP (O=Global Partners LP, Waltham MA) but EXPIRED on 2024-03-30 and the chain
+    is incomplete — every standard client refuses the connection. Recorded as a live security finding, not as an API surface.
 domains:
 - domain: globalp.com
   dnssec: false

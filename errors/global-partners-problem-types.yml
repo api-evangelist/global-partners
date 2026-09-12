@@ -1,0 +1,48 @@
+generated: '2026-09-12'
+method: probed
+source: >-
+  live unauthenticated requests against https://www.globalp.com/wp-json/wp/v2/ on 2026-09-12, cross-checked
+  against the response definitions in openapi/
+format: wordpress-rest
+rfc9457: false
+envelope:
+  shape: '{ "code": string, "message": string, "data": { "status": integer } }'
+  content_type: application/json
+  note: >-
+    Global Partners publishes no error reference. Every entry below was produced by making the failing call
+    and recording exactly what came back. The envelope is WordPress core's, not application/problem+json —
+    there is no type URI, title, detail or instance member.
+problem_types:
+- code: rest_post_invalid_id
+  status: 404
+  title: Invalid post ID.
+  observed_on: GET /wp/v2/sw_terminal/99999999
+  cause: The requested identifier does not match a published record of that post type.
+  remediation: List the collection and use an id from it; ids are integers and are not stable across content migrations.
+- code: rest_no_route
+  status: 404
+  title: No route was found matching the URL and request method.
+  observed_on: GET /wp/v2/nonexistent
+  cause: The path or method is not registered in the site's route table.
+  remediation: Read the live route table at /wp-json/ and use a registered path and method.
+- code: rest_invalid_param
+  status: 400
+  title: 'Invalid parameter(s): <name>'
+  observed_on: GET /wp/v2/sw_terminal?per_page=999
+  cause: A supplied query parameter failed the schema declared for it in the route table.
+  remediation: >-
+    The body carries data.params.<name> with a human message and data.details.<name>.code with a specific
+    sub-code (rest_out_of_bounds was observed for per_page above 100). Clamp per_page to 1-100.
+  sub_codes: [rest_out_of_bounds]
+- code: rest_cannot_create
+  status: 401
+  title: Sorry, you are not allowed to create posts as this user.
+  observed_on: POST /wp/v2/sw_terminal (anonymous)
+  cause: Every write operation is capability-gated; anonymous callers have no capability.
+  remediation: Not remediable by a third party. Write access requires a Global Partners WordPress account and an application password.
+- code: rest_forbidden
+  status: 401
+  title: Sorry, you are not allowed to do that.
+  observed_on: GET /wp/v2/settings (anonymous)
+  cause: The route requires an authenticated user with a capability the caller does not have.
+  remediation: Not remediable by a third party. The public read surface is the collections listed in openapi/.

@@ -1,0 +1,768 @@
+openapi: 3.1.0
+info:
+  title: Global Partners LP Retail Locations API
+  version: wp/v2
+  summary: Retail Locations from the public WordPress REST API served by www.globalp.com.
+  description: 'Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh, XtraMart
+    and branded-dealer network.
+
+
+    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
+    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
+    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
+
+
+    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
+    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
+    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  contact:
+    name: Global Partners LP
+    url: https://www.globalp.com/contact-us
+  termsOfService: https://www.globalp.com/terms-of-use
+  x-generated: '2026-09-12'
+  x-method: derived
+  x-source: https://www.globalp.com/wp-json/
+servers:
+- url: https://www.globalp.com/wp-json
+  description: Production — www.globalp.com WordPress REST API
+tags:
+- name: sw_retail_location
+  description: Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh, XtraMart
+    and branded-dealer network.
+paths:
+  /wp/v2/sw_retail_location:
+    get:
+      operationId: listSwRetailLocation
+      summary: List retail locations
+      description: Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh,
+        XtraMart and branded-dealer network.
+      tags:
+      - sw_retail_location
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts published after a given ISO8601 compliant date.
+      - name: modified_after
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts modified after a given ISO8601 compliant date.
+      - name: before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts published before a given ISO8601 compliant date.
+      - name: modified_before
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date-time
+        description: Limit response to posts modified before a given ISO8601 compliant date.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to specific IDs.
+      - name: search_semantics
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - exact
+        description: How to interpret the search input.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: desc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - author
+          - date
+          - id
+          - include
+          - modified
+          - parent
+          - relevance
+          - slug
+          - include_slugs
+          - title
+          default: date
+        description: Sort collection by post attribute.
+      - name: search_columns
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            enum:
+            - post_title
+            - post_content
+            - post_excerpt
+            type: string
+        description: Array of column names to be searched.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit result set to posts with one or more specific slugs.
+      - name: status
+        in: query
+        required: false
+        schema:
+          type: array
+          default: publish
+          items:
+            enum:
+            - publish
+            - future
+            - draft
+            - pending
+            - private
+            - trash
+            - auto-draft
+            - inherit
+            - request-pending
+            - request-confirmed
+            - request-failed
+            - request-completed
+            - acf-disabled
+            - dp-rewrite-republish
+            - any
+            type: string
+        description: Limit result set to posts assigned one or more statuses.
+      - name: tax_relation
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - AND
+          - OR
+        description: Limit result set based on relationship between multiple taxonomies.
+      - name: sw_state
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items with specific terms assigned in the sw_state taxonomy.
+      - name: sw_state_exclude
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items except those with specific terms assigned in the sw_state taxonomy.
+      - name: sw_retail_brand
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items with specific terms assigned in the sw_retail_brand taxonomy.
+      - name: sw_retail_brand_exclude
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items except those with specific terms assigned in the sw_retail_brand taxonomy.
+      - name: sw_fuel_brand
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items with specific terms assigned in the sw_fuel_brand taxonomy.
+      - name: sw_fuel_brand_exclude
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items except those with specific terms assigned in the sw_fuel_brand taxonomy.
+      - name: sw_fuel_type
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items with specific terms assigned in the sw_fuel_type taxonomy.
+      - name: sw_fuel_type_exclude
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items except those with specific terms assigned in the sw_fuel_type taxonomy.
+      - name: sw_food_option
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items with specific terms assigned in the sw_food_option taxonomy.
+      - name: sw_food_option_exclude
+        in: query
+        required: false
+        schema:
+          type: object
+        description: Limit result set to items except those with specific terms assigned in the sw_food_option taxonomy.
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SwRetailLocation'
+          headers:
+            X-WP-Total:
+              description: Total number of records in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available at the current per_page size.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel="next" / rel="prev").
+              schema:
+                type: string
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createSwRetailLocation
+      summary: Create a retail location record
+      description: Create a retail location record. Requires an authenticated WordPress user with the relevant capability;
+        anonymous requests receive 401 rest_forbidden.
+      tags:
+      - sw_retail_location
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                sw_state:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_state taxonomy.
+                sw_retail_brand:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_retail_brand taxonomy.
+                sw_fuel_brand:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_fuel_brand taxonomy.
+                sw_fuel_type:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_fuel_type taxonomy.
+                sw_food_option:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_food_option taxonomy.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwRetailLocation'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Not authenticated, or the authenticated user lacks the capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /wp/v2/sw_retail_location/{id}:
+    get:
+      operationId: getSwRetailLocation
+      summary: Retrieve one retail location record
+      description: Retrieve one retail location record. Requires an authenticated WordPress user with the relevant capability;
+        anonymous requests receive 401 rest_forbidden.
+      tags:
+      - sw_retail_location
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the retail location.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: password
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The password for the post if it is password protected.
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwRetailLocation'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No record matches the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: updateSwRetailLocation
+      summary: Update one retail location record
+      description: Update one retail location record. Requires an authenticated WordPress user with the relevant capability;
+        anonymous requests receive 401 rest_forbidden.
+      tags:
+      - sw_retail_location
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the retail location.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, in the site's timezone.
+                date_gmt:
+                  type: string
+                  format: date-time
+                  description: The date the post was published, as GMT.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the post unique to its type.
+                status:
+                  type: string
+                  enum:
+                  - publish
+                  - future
+                  - draft
+                  - pending
+                  - private
+                  - acf-disabled
+                  description: A named status for the post.
+                password:
+                  type: string
+                  description: A password to protect access to the content and excerpt.
+                title:
+                  type: object
+                  description: The title for the post.
+                content:
+                  type: object
+                  description: The content for the post.
+                featured_media:
+                  type: integer
+                  description: The ID of the featured media for the post.
+                meta:
+                  type: object
+                  description: Meta fields.
+                template:
+                  type: string
+                  description: The theme file to use to display the post.
+                sw_state:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_state taxonomy.
+                sw_retail_brand:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_retail_brand taxonomy.
+                sw_fuel_brand:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_fuel_brand taxonomy.
+                sw_fuel_type:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_fuel_type taxonomy.
+                sw_food_option:
+                  type: array
+                  items:
+                    type: integer
+                  description: The terms assigned to the post in the sw_food_option taxonomy.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwRetailLocation'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Not authenticated, or the authenticated user lacks the capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No record matches the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      operationId: deleteSwRetailLocation
+      summary: Delete one retail location record
+      description: Delete one retail location record. Requires an authenticated WordPress user with the relevant capability;
+        anonymous requests receive 401 rest_forbidden.
+      tags:
+      - sw_retail_location
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the retail location.
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Whether to bypass Trash and force deletion.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwRetailLocation'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Not authenticated, or the authenticated user lacks the capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No record matches the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      description: The WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: The HTTP status code.
+    SwRetailLocation:
+      type: object
+      properties:
+        id:
+          type: integer
+        date:
+          type: string
+        date_gmt:
+          type: string
+        guid:
+          type: object
+          properties:
+            rendered:
+              type: string
+        modified:
+          type: string
+        modified_gmt:
+          type: string
+        slug:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        link:
+          type: string
+        title:
+          type: object
+          properties:
+            rendered:
+              type: string
+        content:
+          type: object
+          properties:
+            rendered:
+              type: string
+            protected:
+              type: boolean
+        featured_media:
+          type: integer
+        template:
+          type: string
+        meta:
+          type: object
+          properties:
+            _acf_changed:
+              type: boolean
+            content-type:
+              type: string
+        sw_state:
+          type: array
+          items:
+            type: integer
+        sw_retail_brand:
+          type: array
+          items: {}
+        sw_fuel_brand:
+          type: array
+          items:
+            type: integer
+        sw_fuel_type:
+          type: array
+          items: {}
+        sw_food_option:
+          type: array
+          items: {}
+        acf:
+          type: array
+          items: {}
+        _links:
+          type: object
+          properties:
+            self:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+                  targetHints:
+                    type: object
+                    properties:
+                      allow: {}
+            collection:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+            about:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+            wp:attachment:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+            wp:term:
+              type: array
+              items:
+                type: object
+                properties:
+                  taxonomy:
+                    type: string
+                  embeddable:
+                    type: boolean
+                  href:
+                    type: string
+            curies:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  href:
+                    type: string
+                  templated:
+                    type: boolean
+      description: A Retail Location record as returned by the public, unauthenticated collection endpoint. Structure derived
+        from a live response on 2026-09-12; no values are reproduced.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
+        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

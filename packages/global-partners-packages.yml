@@ -1,0 +1,17 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  npm registry search (global-partners, globalp, "global partners fuel"), pypi.org/pypi/globalp/json,
+  and the GitHub user/org API for github.com/global-partners
+package_count: 0
+packages: []
+note: >-
+  Global Partners LP publishes no client libraries on any package registry. npm registry search returns
+  no package whose name, homepage or repository resolves to globalp.com; pypi.org/pypi/globalp/json
+  returns 404. A GitHub organization named "Global Partners" does exist at github.com/global-partners
+  (created 2023-09-01) but it has zero public repositories and carries no blog, company or location field
+  tying it to Global Partners LP (NYSE: GLP) rather than to any of the many other entities using that
+  name — so no GitHubOrganization pointer is emitted for it and no package is attributed to it. The only
+  callable surface the company serves (the WordPress REST API at www.globalp.com/wp-json) is consumed
+  with an ordinary HTTP client or any generic WordPress REST client; there is no first-party SDK to
+  record, and no version or published date exists to read.

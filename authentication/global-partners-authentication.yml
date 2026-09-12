@@ -1,0 +1,50 @@
+generated: '2026-09-12'
+method: derived
+source: openapi/global-partners-categories-api-openapi.yml, openapi/global-partners-comments-api-openapi.yml,
+  openapi/global-partners-content-media-type-api-openapi.yml, openapi/global-partners-content-topic-api-openapi.yml,
+  openapi/global-partners-content-type-api-openapi.yml, openapi/global-partners-media-api-openapi.yml,
+  openapi/global-partners-pages-api-openapi.yml, openapi/global-partners-posts-api-openapi.yml,
+  openapi/global-partners-search-api-openapi.yml, openapi/global-partners-statuses-api-openapi.yml,
+  openapi/global-partners-sw-business-sector-api-openapi.yml, openapi/global-partners-sw-employee-api-openapi.yml
+  ...
+summary:
+  types:
+  - http
+schemes:
+- name: applicationPassword
+  type: http
+  scheme: basic
+  description: WordPress application passwords (HTTP Basic). The site's discovery document advertises
+    the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php.
+    Read operations require no credentials.
+  sources:
+  - openapi/global-partners-categories-api-openapi.yml
+  - openapi/global-partners-comments-api-openapi.yml
+  - openapi/global-partners-content-media-type-api-openapi.yml
+  - openapi/global-partners-content-topic-api-openapi.yml
+  - openapi/global-partners-content-type-api-openapi.yml
+  - openapi/global-partners-media-api-openapi.yml
+  - openapi/global-partners-pages-api-openapi.yml
+  - openapi/global-partners-posts-api-openapi.yml
+  - openapi/global-partners-search-api-openapi.yml
+  - openapi/global-partners-statuses-api-openapi.yml
+  - openapi/global-partners-sw-business-sector-api-openapi.yml
+  - openapi/global-partners-sw-employee-api-openapi.yml
+  - openapi/global-partners-sw-food-option-api-openapi.yml
+  - openapi/global-partners-sw-fuel-brand-api-openapi.yml
+  - openapi/global-partners-sw-fuel-type-api-openapi.yml
+  - openapi/global-partners-sw-listing-type-api-openapi.yml
+  - openapi/global-partners-sw-method-of-supply-api-openapi.yml
+  - openapi/global-partners-sw-ownership-status-api-openapi.yml
+  - openapi/global-partners-sw-product-api-openapi.yml
+  - openapi/global-partners-sw-property-api-openapi.yml
+  - openapi/global-partners-sw-retail-brand-api-openapi.yml
+  - openapi/global-partners-sw-retail-location-api-openapi.yml
+  - openapi/global-partners-sw-service-api-openapi.yml
+  - openapi/global-partners-sw-site-type-api-openapi.yml
+  - openapi/global-partners-sw-state-api-openapi.yml
+  - openapi/global-partners-sw-terminal-api-openapi.yml
+  - openapi/global-partners-tags-api-openapi.yml
+  - openapi/global-partners-taxonomies-api-openapi.yml
+  - openapi/global-partners-types-api-openapi.yml
+  - openapi/global-partners-users-api-openapi.yml

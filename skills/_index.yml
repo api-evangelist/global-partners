@@ -1,0 +1,21 @@
+generated: '2026-09-12'
+method: generated
+source: openapi/ (derived from https://www.globalp.com/wp-json/)
+note: >-
+  Global Partners LP publishes no skills, no AGENTS.md and no agent-facing documentation — probed
+  www.globalp.com and found none. These three skills were packaged by API Evangelist from the operations
+  the company's own public WordPress REST API actually serves. Every operationId referenced was verified
+  against the harvested contract and every filter was exercised live on 2026-09-12.
+skills:
+- name: global-partners-find-terminals
+  file: global-partners-find-terminals.md
+  api: global-partners:global-partners-sw-terminal-api
+  summary: Find terminals by state, product, terminal service or method of supply.
+- name: global-partners-find-retail-locations
+  file: global-partners-find-retail-locations.md
+  api: global-partners:global-partners-sw-retail-location-api
+  summary: Find retail sites by state, retail banner, fuel brand or fuel type.
+- name: global-partners-track-news
+  file: global-partners-track-news.md
+  api: global-partners:global-partners-posts-api
+  summary: Poll news and media releases by date or editorial taxonomy, and search every public content type.

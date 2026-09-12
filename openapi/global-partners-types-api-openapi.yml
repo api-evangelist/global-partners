@@ -1,0 +1,189 @@
+openapi: 3.1.0
+info:
+  title: Global Partners LP Content Type Registry API
+  version: wp/v2
+  summary: Content Type Registry from the public WordPress REST API served by www.globalp.com.
+  description: 'The registry of every post type the site exposes over REST.
+
+
+    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
+    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
+    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
+
+
+    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
+    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
+    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  contact:
+    name: Global Partners LP
+    url: https://www.globalp.com/contact-us
+  termsOfService: https://www.globalp.com/terms-of-use
+  x-generated: '2026-09-12'
+  x-method: derived
+  x-source: https://www.globalp.com/wp-json/
+servers:
+- url: https://www.globalp.com/wp-json
+  description: Production — www.globalp.com WordPress REST API
+tags:
+- name: types
+  description: The registry of every post type the site exposes over REST.
+paths:
+  /wp/v2/types:
+    get:
+      operationId: listTypes
+      summary: List content type registry
+      description: The registry of every post type the site exposes over REST.
+      tags:
+      - types
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Types'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /wp/v2/types/{type}:
+    get:
+      operationId: getTypes
+      summary: Retrieve one content type registry record
+      description: Retrieve one content type registry record. Requires an authenticated WordPress user with the relevant capability;
+        anonymous requests receive 401 rest_forbidden.
+      tags:
+      - types
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique identifier for the content type registry.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Types'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No record matches the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      description: The WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: The HTTP status code.
+    Types:
+      type: object
+      properties:
+        description:
+          type: string
+        hierarchical:
+          type: boolean
+        has_archive:
+          type: boolean
+        name:
+          type: string
+        slug:
+          type: string
+        icon:
+          type: string
+        taxonomies:
+          type: array
+          items:
+            type: string
+        rest_base:
+          type: string
+        rest_namespace:
+          type: string
+        template:
+          type: array
+          items: {}
+        template_lock:
+          type: boolean
+        _links:
+          type: object
+          properties:
+            collection:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+            wp:items:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+            curies:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  href:
+                    type: string
+                  templated:
+                    type: boolean
+      description: A Content Type Registry record as returned by the public, unauthenticated collection endpoint. Structure
+        derived from a live response on 2026-09-12; no values are reproduced.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
+        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

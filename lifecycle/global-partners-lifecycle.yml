@@ -1,0 +1,43 @@
+generated: '2026-09-12'
+method: searched
+source: >-
+  https://www.globalp.com/ site crawl, DNS probes of status./developer./docs./api. subdomains, and the
+  live route table at https://www.globalp.com/wp-json/
+versioning:
+  scheme: namespace-in-path
+  current: wp/v2
+  policy_published: false
+  note: >-
+    The only versioning in evidence is WordPress's own namespace convention. Global Partners publishes no
+    versioning policy, no version history and no compatibility commitment for this surface.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations: []
+  note: >-
+    No Deprecation or Sunset response header is returned on any operation, and no deprecation policy page
+    exists on globalp.com. No operation in the harvested contract is marked deprecated.
+status_page:
+  published: false
+  url: null
+  note: >-
+    No status page. status.globalp.com does not resolve; no statuspage.io, instatus or similar property is
+    linked from globalp.com.
+sla:
+  published: false
+  note: No service-level agreement or uptime commitment is published for any surface.
+support:
+  channel: https://www.globalp.com/contact-us
+  note: >-
+    General corporate contact only. There is no developer support channel, no forum and no issue tracker.
+    Commercial customers are served through the GlobalCONNECT portal at connect.globalp.com.
+observations:
+- date: '2026-09-12'
+  finding: >-
+    api.globalp.com resolves (34.233.44.177) and serves a static archived GitLab Community Edition sign-in
+    page over Apache. Its wildcard TLS certificate (O=Global Partners LP, Waltham MA) expired 2024-03-30
+    and the chain is incomplete, so ordinary clients refuse it. No GitLab API path responds. This reads as
+    a decommissioned host that still holds an API-shaped name. Recorded in
+    security/global-partners-domain-security.yml.

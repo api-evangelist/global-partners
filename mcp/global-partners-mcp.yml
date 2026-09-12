@@ -1,0 +1,64 @@
+generated: '2026-09-12'
+method: derived
+source: openapi/ (derived from https://www.globalp.com/wp-json/)
+status: candidate
+name: Global Partners LP (candidate MCP tools)
+description: >-
+  Global Partners LP ships no MCP server, hosted or local. This is a CANDIDATE tool list derived from the
+  public, unauthenticated read operations of the WordPress REST API the company serves at
+  www.globalp.com/wp-json. Nothing here is published by Global Partners and no endpoint below is an MCP
+  endpoint — the deployment block records mode none for exactly that reason.
+deployment:
+  mode: none
+  auth: none
+  verified: derived
+  note: >-
+    No hosted MCP endpoint and no stdio package exists. Searched the corporate site, the GitHub org and
+    the npm registry; probed /.well-known/ on six Global Partners hosts (see well-known/). Nothing found.
+    An agent that wants this data today calls the REST collections directly and unauthenticated.
+surfaces:
+  openapi: openapi/
+  rest_base: https://www.globalp.com/wp-json
+  graphql: null
+  mcp: null
+tools:
+- name: list_terminals
+  description: List Global Partners liquid-energy terminals (157 published) with their product, service, supply-method and state tags.
+  rest: [listSwTerminal]
+  inputSchema_source: openapi/global-partners-sw-terminal-api-openapi.yml
+- name: get_terminal
+  description: Retrieve one terminal record by id.
+  rest: [getSwTerminal]
+  inputSchema_source: openapi/global-partners-sw-terminal-api-openapi.yml
+- name: list_retail_locations
+  description: List Global Partners retail fuel and convenience locations (846 published).
+  rest: [listSwRetailLocation]
+  inputSchema_source: openapi/global-partners-sw-retail-location-api-openapi.yml
+- name: get_retail_location
+  description: Retrieve one retail location by id.
+  rest: [getSwRetailLocation]
+  inputSchema_source: openapi/global-partners-sw-retail-location-api-openapi.yml
+- name: list_properties
+  description: List real-estate listings marketed by Global Partners' real-estate ventures business.
+  rest: [listSwProperty]
+  inputSchema_source: openapi/global-partners-sw-property-api-openapi.yml
+- name: list_products
+  description: List the petroleum, renewable and related product taxonomy applied to terminals.
+  rest: [listSwProduct]
+  inputSchema_source: openapi/global-partners-sw-product-api-openapi.yml
+- name: list_fuel_brands
+  description: List the fuel brands carried across the retail network.
+  rest: [listSwFuelBrand]
+  inputSchema_source: openapi/global-partners-sw-fuel-brand-api-openapi.yml
+- name: list_retail_brands
+  description: List the Global Partners retail banner brands.
+  rest: [listSwRetailBrand]
+  inputSchema_source: openapi/global-partners-sw-retail-brand-api-openapi.yml
+- name: list_news
+  description: List Global Partners news and media releases.
+  rest: [listPosts]
+  inputSchema_source: openapi/global-partners-posts-api-openapi.yml
+- name: search_site
+  description: Search across every public content type on globalp.com.
+  rest: [listSearch]
+  inputSchema_source: openapi/global-partners-search-api-openapi.yml

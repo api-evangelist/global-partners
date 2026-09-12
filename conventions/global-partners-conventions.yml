@@ -1,0 +1,106 @@
+generated: '2026-09-12'
+method: derived
+source: >-
+  openapi/ (derived from https://www.globalp.com/wp-json/) plus live unauthenticated request/response
+  observation against https://www.globalp.com/wp-json/wp/v2/ on 2026-09-12
+note: >-
+  Global Partners LP publishes no API documentation, no conventions guide and no developer program. Every
+  convention below was read off the contract the site actually serves and confirmed against live
+  responses. These are WordPress core REST semantics as deployed by this provider, not commitments the
+  provider has made.
+authentication:
+  style: none-for-read
+  read: No credentials. Every collection and item GET returns 200 anonymously.
+  write: >-
+    HTTP Basic with a WordPress application password. The discovery document advertises the authorization
+    endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Observed: an anonymous POST to
+    /wp/v2/sw_terminal returns 401 rest_cannot_create.
+  detail: authentication/global-partners-authentication.yml
+pagination:
+  style: page-number
+  params:
+  - name: page
+    default: 1
+    minimum: 1
+  - name: per_page
+    default: 10
+    minimum: 1
+    maximum: 100
+    note: Observed — per_page=999 returns 400 rest_invalid_param with rest_out_of_bounds detail.
+  - name: offset
+    note: Alternative offset-based paging on the same collections.
+  response_headers:
+  - name: X-WP-Total
+    description: Total records in the collection. Observed 157 on sw_terminal, 846 on sw_retail_location.
+  - name: X-WP-TotalPages
+    description: Total pages at the current per_page size.
+  - name: Link
+    description: RFC 8288 links with rel="next" / rel="prev". Exposed via access-control-expose-headers.
+  ordering:
+    params: [order, orderby]
+    order_enum: [asc, desc]
+sparse_fields:
+  supported: true
+  params: [_fields, _embed, _links, context]
+  note: >-
+    _fields restricts the returned properties; context (view|embed|edit) selects the field set — edit
+    requires an authenticated capability. _embed inlines linked resources declared in _links.
+filtering:
+  supported: true
+  note: >-
+    Collections accept search, include, exclude, slug, status, after/before, modified_after/modified_before
+    and — on the custom post types — taxonomy-term filters such as sw_state, sw_product, sw_service and
+    sw_method_of_supply.
+request_id_tracing:
+  supported: false
+  note: No correlation or request-id header is returned. Responses carry Cloudflare (cf-ray) and WP Engine
+    (x-cache, x-cache-group) infrastructure headers only.
+versioning:
+  style: namespace-in-path
+  current: wp/v2
+  note: >-
+    Versioning is WordPress's namespace convention — /wp-json/<namespace>/<version>/. The site exposes 18
+    namespaces; wp/v2 carries all of the business content. There is no provider-published version policy.
+error_envelope:
+  format: wordpress-rest
+  rfc9457: false
+  shape: '{ "code": "<machine-readable string>", "message": "<human text>", "data": { "status": <http status> } }'
+  detail: errors/global-partners-problem-types.yml
+rate_limit_signaling:
+  headers_returned: []
+  note: >-
+    No RateLimit-*, X-RateLimit-* or Retry-After header is returned on a normal response. See
+    rate-limits/global-partners-rate-limits.yml.
+  detail: rate-limits/global-partners-rate-limits.yml
+idempotency:
+  coverage: none
+  mechanism: null
+  header: null
+  scope: []
+  note: >-
+    No idempotency mechanism exists. No Idempotency-Key header is accepted or documented anywhere in the
+    route table, and the provider publishes no replay-protection guidance. The public surface is read-only,
+    so an unauthenticated agent cannot double-fire a write at all; for an authenticated writer, POST to a
+    collection creates a new record on every call.
+reversibility:
+  grade: na
+  note: >-
+    The publicly reachable surface is read-only — every write operation in the route table is
+    capability-gated and returns 401 to an anonymous caller (observed on POST /wp/v2/sw_terminal). There is
+    no public action an agent can take that would need taking back, so reversibility does not apply. For an
+    authenticated editor, WordPress core provides DELETE with ?force=false (moves to trash, restorable) and
+    ?force=true (permanent), and revisions on posts/pages — but Global Partners publishes no policy, no
+    stated restore window and no documentation of either, so no window is asserted here.
+  write_surfaces: []
+dry_run_mode:
+  supported: false
+  note: No dry-run, preview or validate-only mode exists on any operation.
+caching:
+  supported: true
+  note: >-
+    Responses carry cache-control max-age=600, must-revalidate behind WP Engine (x-cacheable: SHORT) and
+    Cloudflare (cf-cache-status). No ETag or Last-Modified is returned on collection responses.
+cors:
+  enabled: true
+  allow_headers: [Authorization, X-WP-Nonce, Content-Disposition, Content-MD5, Content-Type]
+  expose_headers: [X-WP-Total, X-WP-TotalPages, Link]

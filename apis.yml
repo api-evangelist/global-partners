@@ -1,11 +1,12 @@
 aid: global-partners
 name: Global Partners LP
-description: >-
-  Global Partners LP is a leading independent owner, supplier, and operator of
-  liquid energy terminals, fueling locations, and retail experiences. The
-  company distributes gasoline, distillates, residual oil, renewable fuels,
-  crude oil, and propane across the Northeast United States through an
-  integrated network of terminals, gas stations, and convenience stores.
+description: 'Global Partners LP is a leading independent owner, supplier, and operator of liquid energy terminals, fueling
+  locations, and retail experiences. The company distributes gasoline, distillates, residual oil, renewable fuels, crude oil,
+  and propane across the Northeast United States through an integrated network of terminals, gas stations, and convenience
+  stores. Global Partners publishes no developer program, no API keys and no API documentation, but www.globalp.com runs on
+  WordPress and serves a fully public, unauthenticated WordPress REST API whose custom content types model the company itself:
+  157 terminals (sw_terminal), 846 retail locations (sw_retail_location), real-estate listings, leadership profiles, and the
+  product, service, fuel-type, fuel-brand, retail-brand, state, supply-method and ownership-status taxonomies applied to them.'
 type: Index
 deliveryModel:
   model: unknown
@@ -29,34 +30,528 @@ accessModel:
   source: []
   generated: '2026-07-22'
   method: derived
-position: Consuming
+position: Producing
 access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/global-partners.png
 tags:
-  - Energy
-  - Fuel Distribution
-  - Oil and Gas
-  - Petroleum
-  - Retail Fuel
-  - Terminals
-  - Fortune 500
+- Energy
+- Fuel Distribution
+- Oil and Gas
+- Petroleum
+- Retail Fuel
+- Terminals
+- Fortune 500
+- Content
+- WordPress
+- Terminal Network
+- Retail Locations
 created: '2026-03-21'
-modified: '2026-04-28'
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/global-partners/refs/heads/main/apis.yml
+modified: '2026-09-12'
+url: https://raw.githubusercontent.com/api-evangelist/global-partners/refs/heads/main/apis.yml
 specificationVersion: '0.23'
-apis: []
+apis:
+- aid: global-partners:global-partners-sw-terminal-api
+  name: Global Partners LP Terminals API
+  description: Global Partners liquid-energy terminal locations (157 published) with the products, services, supply methods
+    and states each terminal is tagged with. Served over the public WordPress REST API at www.globalp.com/wp-json (5 operation(s),
+    read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_terminal
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-terminal-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-terminal-overlay.yaml
+- aid: global-partners:global-partners-sw-retail-location-api
+  name: Global Partners LP Retail Locations API
+  description: Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh, XtraMart
+    and branded-dealer network. Served over the public WordPress REST API at www.globalp.com/wp-json (5 operation(s), read
+    access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_retail_location
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-retail-location-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-retail-location-overlay.yaml
+- aid: global-partners:global-partners-sw-property-api
+  name: Global Partners LP Real Estate API
+  description: Real-estate listings marketed by Global Partners' real-estate ventures business. Served over the public WordPress
+    REST API at www.globalp.com/wp-json (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_property
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-property-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-property-overlay.yaml
+- aid: global-partners:global-partners-sw-employee-api
+  name: Global Partners LP Leadership API
+  description: Published leadership and employee profiles. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_employee
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-employee-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-employee-overlay.yaml
+- aid: global-partners:global-partners-sw-product-api
+  name: Global Partners LP Products API
+  description: The petroleum, renewable and related product taxonomy applied to terminals (asphalt, gasoline, distillates,
+    propane, renewables and more). Served over the public WordPress REST API at www.globalp.com/wp-json (5 operation(s), read
+    access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_product
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-product-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-product-overlay.yaml
+- aid: global-partners:global-partners-sw-service-api
+  name: Global Partners LP Terminal Services API
+  description: Terminal service taxonomy (bottom loading, additive injection and similar). Served over the public WordPress
+    REST API at www.globalp.com/wp-json (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_service
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-service-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-service-overlay.yaml
+- aid: global-partners:global-partners-sw-fuel-type-api
+  name: Global Partners LP Fuel Types API
+  description: Retail fuel-type taxonomy (DEF, diesel, gasoline grades). Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_fuel_type
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-fuel-type-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-fuel-type-overlay.yaml
+- aid: global-partners:global-partners-sw-fuel-brand-api
+  name: Global Partners LP Fuel Brands API
+  description: Fuel brands carried at retail locations (76, Citgo, Exxon, Mobil, Shell and others). Served over the public
+    WordPress REST API at www.globalp.com/wp-json (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_fuel_brand
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-fuel-brand-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-fuel-brand-overlay.yaml
+- aid: global-partners:global-partners-sw-retail-brand-api
+  name: Global Partners LP Retail Brands API
+  description: Global Partners retail banner brands (Alltown, Alltown Fresh, XtraMart and others). Served over the public
+    WordPress REST API at www.globalp.com/wp-json (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_retail_brand
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-retail-brand-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-retail-brand-overlay.yaml
+- aid: global-partners:global-partners-sw-state-api
+  name: Global Partners LP States API
+  description: US state taxonomy used to place terminals and retail locations. Served over the public WordPress REST API at
+    www.globalp.com/wp-json (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_state
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-state-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-state-overlay.yaml
+- aid: global-partners:global-partners-sw-site-type-api
+  name: Global Partners LP Site Types API
+  description: Site-type taxonomy applied to real-estate listings. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_site_type
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-site-type-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-site-type-overlay.yaml
+- aid: global-partners:global-partners-sw-method-of-supply-api
+  name: Global Partners LP Methods of Supply API
+  description: Method-of-supply taxonomy applied to terminals. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_method_of_supply
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-method-of-supply-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-method-of-supply-overlay.yaml
+- aid: global-partners:global-partners-sw-ownership-status-api
+  name: Global Partners LP Ownership Status API
+  description: Ownership and operating status taxonomy applied to sites. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_ownership_status
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-ownership-status-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-ownership-status-overlay.yaml
+- aid: global-partners:global-partners-sw-business-sector-api
+  name: Global Partners LP Business Sectors API
+  description: Business-sector taxonomy used across the site. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_business_sector
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-business-sector-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-business-sector-overlay.yaml
+- aid: global-partners:global-partners-sw-food-option-api
+  name: Global Partners LP Food Options API
+  description: Food-service option taxonomy for retail locations. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_food_option
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-food-option-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-food-option-overlay.yaml
+- aid: global-partners:global-partners-sw-listing-type-api
+  name: Global Partners LP Listing Types API
+  description: Real-estate listing-type taxonomy (lease, sale). Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - sw_listing_type
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-sw-listing-type-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-sw-listing-type-overlay.yaml
+- aid: global-partners:global-partners-content-type-api
+  name: Global Partners LP Content Types API
+  description: Editorial content-type taxonomy applied to news and media posts. Served over the public WordPress REST API
+    at www.globalp.com/wp-json (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - content_type
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-content-type-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-content-type-overlay.yaml
+- aid: global-partners:global-partners-content-topic-api
+  name: Global Partners LP Content Topics API
+  description: Editorial topic taxonomy applied to news and media posts. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - content_topic
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-content-topic-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-content-topic-overlay.yaml
+- aid: global-partners:global-partners-content-media-type-api
+  name: Global Partners LP Content Media Types API
+  description: Editorial media-type taxonomy applied to news and media posts. Served over the public WordPress REST API at
+    www.globalp.com/wp-json (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - content_media_type
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-content-media-type-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-content-media-type-overlay.yaml
+- aid: global-partners:global-partners-posts-api
+  name: Global Partners LP News Posts API
+  description: Global Partners news and media releases published on globalp.com. Served over the public WordPress REST API
+    at www.globalp.com/wp-json (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - posts
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-posts-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-posts-overlay.yaml
+- aid: global-partners:global-partners-pages-api
+  name: Global Partners LP Pages API
+  description: Published website pages. Served over the public WordPress REST API at www.globalp.com/wp-json (5 operation(s),
+    read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - pages
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-pages-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-pages-overlay.yaml
+- aid: global-partners:global-partners-media-api
+  name: Global Partners LP Media API
+  description: Published media library items (images, PDFs, documents). Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - media
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-media-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-media-overlay.yaml
+- aid: global-partners:global-partners-categories-api
+  name: Global Partners LP Categories API
+  description: WordPress category taxonomy applied to news posts. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - categories
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-categories-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-categories-overlay.yaml
+- aid: global-partners:global-partners-tags-api
+  name: Global Partners LP Tags API
+  description: WordPress tag taxonomy. Served over the public WordPress REST API at www.globalp.com/wp-json (5 operation(s),
+    read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - tags
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-tags-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-tags-overlay.yaml
+- aid: global-partners:global-partners-comments-api
+  name: Global Partners LP Comments API
+  description: WordPress comment collection (currently empty). Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - comments
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-comments-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-comments-overlay.yaml
+- aid: global-partners:global-partners-users-api
+  name: Global Partners LP Authors API
+  description: Post-author records exposed by the WordPress REST API. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (5 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - users
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-users-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-users-overlay.yaml
+- aid: global-partners:global-partners-search-api
+  name: Global Partners LP Search API
+  description: Cross-content-type search across every public post type on globalp.com. Served over the public WordPress REST
+    API at www.globalp.com/wp-json (1 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - search
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-search-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-search-overlay.yaml
+- aid: global-partners:global-partners-types-api
+  name: Global Partners LP Content Type Registry API
+  description: The registry of every post type the site exposes over REST. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (2 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - types
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-types-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-types-overlay.yaml
+- aid: global-partners:global-partners-taxonomies-api
+  name: Global Partners LP Taxonomy Registry API
+  description: The registry of every taxonomy the site exposes over REST. Served over the public WordPress REST API at www.globalp.com/wp-json
+    (2 operation(s), read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - taxonomies
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-taxonomies-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-taxonomies-overlay.yaml
+- aid: global-partners:global-partners-statuses-api
+  name: Global Partners LP Post Statuses API
+  description: The post-status registry. Served over the public WordPress REST API at www.globalp.com/wp-json (2 operation(s),
+    read access unauthenticated).
+  humanURL: https://www.globalp.com/wp-json/
+  baseURL: https://www.globalp.com/wp-json
+  tags:
+  - statuses
+  - WordPress
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/global-partners-statuses-api-openapi.yml
+  - type: Overlay
+    url: overlays/global-partners-statuses-overlay.yaml
 common:
-  - type: DomainSecurity
-    url: security/global-partners-domain-security.yml
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/global-companies-llc
-  - type: Website
-    url: https://www.globalp.com
-  - type: Customer Portal
-    url: https://www.globalp.com/globalconnect/
-  - url: http://www.globalp.com/feed
-    type: Blog
+- type: Authentication
+  url: authentication/global-partners-authentication.yml
+- type: DomainSecurity
+  url: security/global-partners-domain-security.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/global-companies-llc
+- type: Website
+  url: https://www.globalp.com
+- url: https://www.globalp.com/feed
+  type: Blog
+- type: Customer Portal
+  url: https://www.globalp.com/what-we-offer/globalconnect-portal
+- type: PrivacyPolicy
+  url: https://www.globalp.com/privacy-policy
+- type: TermsOfService
+  url: https://www.globalp.com/terms-of-use
+- type: Support
+  url: https://www.globalp.com/contact-us
+- type: Login
+  url: https://connect.globalp.com/Login/Login
+- type: WellKnown
+  url: well-known/global-partners-well-known.yml
+- type: X-MCPServerCandidate
+  url: mcp/global-partners-mcp.yml
+- type: LLMsTxt
+  url: llms/global-partners-llms.txt
+- type: Conformance
+  url: conformance/global-partners-conformance.yml
+- type: ErrorCatalog
+  url: errors/global-partners-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/global-partners-lifecycle.yml
+- type: Conventions
+  url: conventions/global-partners-conventions.yml
+- type: DataModel
+  url: data-model/global-partners-data-model.yml
+- type: Plans
+  url: plans/global-partners-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/global-partners-rate-limits.yml
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
-  - FN: Kin Lane
-    email: info@apievangelist.com
+- FN: Kin Lane
+  email: info@apievangelist.com
+x-enrichment:
+  date: '2026-09-12'
+  status: enriched
+  artifacts_added: 77
+  pass: local-v3
+  artifacts_updated: 2

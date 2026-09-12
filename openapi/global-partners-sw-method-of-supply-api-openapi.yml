@@ -1,0 +1,466 @@
+openapi: 3.1.0
+info:
+  title: Global Partners LP Methods of Supply API
+  version: wp/v2
+  summary: Methods of Supply from the public WordPress REST API served by www.globalp.com.
+  description: 'Method-of-supply taxonomy applied to terminals.
+
+
+    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
+    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
+    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
+
+
+    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
+    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
+    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  contact:
+    name: Global Partners LP
+    url: https://www.globalp.com/contact-us
+  termsOfService: https://www.globalp.com/terms-of-use
+  x-generated: '2026-09-12'
+  x-method: derived
+  x-source: https://www.globalp.com/wp-json/
+servers:
+- url: https://www.globalp.com/wp-json
+  description: Production — www.globalp.com WordPress REST API
+tags:
+- name: sw_method_of_supply
+  description: Method-of-supply taxonomy applied to terminals.
+paths:
+  /wp/v2/sw_method_of_supply:
+    get:
+      operationId: listSwMethodOfSupply
+      summary: List methods of supply
+      description: Method-of-supply taxonomy applied to terminals.
+      tags:
+      - sw_method_of_supply
+      parameters:
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 1
+          minimum: 1
+        description: Current page of the collection.
+      - name: per_page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+          minimum: 1
+          maximum: 100
+        description: Maximum number of items to be returned in result set.
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Limit results to those matching a string.
+      - name: exclude
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Ensure result set excludes specific IDs.
+      - name: include
+        in: query
+        required: false
+        schema:
+          type: array
+          default: []
+          items:
+            type: integer
+        description: Limit result set to specific IDs.
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Offset the result set by a specific number of items.
+      - name: order
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+          default: asc
+        description: Order sort attribute ascending or descending.
+      - name: orderby
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - id
+          - include
+          - name
+          - slug
+          - include_slugs
+          - term_group
+          - description
+          - count
+          default: name
+        description: Sort collection by term attribute.
+      - name: hide_empty
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Whether to hide terms not assigned to any posts.
+      - name: post
+        in: query
+        required: false
+        schema:
+          type: integer
+        description: Limit result set to terms assigned to a specific post.
+      - name: slug
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Limit result set to terms with one or more specific slugs.
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SwMethodOfSupply'
+          headers:
+            X-WP-Total:
+              description: Total number of records in the collection.
+              schema:
+                type: integer
+            X-WP-TotalPages:
+              description: Total number of pages available at the current per_page size.
+              schema:
+                type: integer
+            Link:
+              description: RFC 8288 pagination links (rel="next" / rel="prev").
+              schema:
+                type: string
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: createSwMethodOfSupply
+      summary: Create a methods of supply record
+      description: Create a methods of supply record. Requires an authenticated WordPress user with the relevant capability;
+        anonymous requests receive 401 rest_forbidden.
+      tags:
+      - sw_method_of_supply
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: HTML description of the term.
+                name:
+                  type: string
+                  description: HTML title for the term.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the term unique to its type.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwMethodOfSupply'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Not authenticated, or the authenticated user lacks the capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /wp/v2/sw_method_of_supply/{id}:
+    get:
+      operationId: getSwMethodOfSupply
+      summary: Retrieve one methods of supply record
+      description: Retrieve one methods of supply record. Requires an authenticated WordPress user with the relevant capability;
+        anonymous requests receive 401 rest_forbidden.
+      tags:
+      - sw_method_of_supply
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the methods of supply.
+      - name: context
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - view
+          - embed
+          - edit
+          default: view
+        description: Scope under which the request is made; determines fields present in response.
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwMethodOfSupply'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No record matches the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      operationId: updateSwMethodOfSupply
+      summary: Update one methods of supply record
+      description: Update one methods of supply record. Requires an authenticated WordPress user with the relevant capability;
+        anonymous requests receive 401 rest_forbidden.
+      tags:
+      - sw_method_of_supply
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the methods of supply.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: HTML description of the term.
+                name:
+                  type: string
+                  description: HTML title for the term.
+                slug:
+                  type: string
+                  description: An alphanumeric identifier for the term unique to its type.
+                meta:
+                  type: object
+                  description: Meta fields.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwMethodOfSupply'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Not authenticated, or the authenticated user lacks the capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No record matches the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      operationId: deleteSwMethodOfSupply
+      summary: Delete one methods of supply record
+      description: Delete one methods of supply record. Requires an authenticated WordPress user with the relevant capability;
+        anonymous requests receive 401 rest_forbidden.
+      tags:
+      - sw_method_of_supply
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Unique identifier for the methods of supply.
+      - name: force
+        in: query
+        required: false
+        schema:
+          type: boolean
+          default: false
+        description: Required to be true, as terms do not support trashing.
+      security:
+      - applicationPassword: []
+      responses:
+        '200':
+          description: Success.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwMethodOfSupply'
+        '400':
+          description: Invalid parameter (rest_invalid_param).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Not authenticated, or the authenticated user lacks the capability (rest_forbidden).
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: No record matches the supplied identifier.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      description: The WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: The HTTP status code.
+    SwMethodOfSupply:
+      type: object
+      properties:
+        id:
+          type: integer
+        count:
+          type: integer
+        description:
+          type: string
+        link:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        taxonomy:
+          type: string
+        meta:
+          type: array
+          items: {}
+        acf:
+          type: array
+          items: {}
+        _links:
+          type: object
+          properties:
+            self:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+                  targetHints:
+                    type: object
+                    properties:
+                      allow: {}
+            collection:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+            about:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+            wp:post_type:
+              type: array
+              items:
+                type: object
+                properties:
+                  href:
+                    type: string
+            curies:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  href:
+                    type: string
+                  templated:
+                    type: boolean
+      description: A Methods of Supply record as returned by the public, unauthenticated collection endpoint. Structure derived
+        from a live response on 2026-09-12; no values are reproduced.
+  securitySchemes:
+    applicationPassword:
+      type: http
+      scheme: basic
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
+        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
