@@ -58,6 +58,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_terminal
   - WordPress
   - Content
@@ -74,6 +77,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_retail_location
   - WordPress
   - Content
@@ -89,6 +95,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_property
   - WordPress
   - Content
@@ -104,6 +113,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_employee
   - WordPress
   - Content
@@ -120,6 +132,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_product
   - WordPress
   - Content
@@ -135,6 +150,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_service
   - WordPress
   - Content
@@ -150,6 +168,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_fuel_type
   - WordPress
   - Content
@@ -165,6 +186,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_fuel_brand
   - WordPress
   - Content
@@ -180,6 +204,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_retail_brand
   - WordPress
   - Content
@@ -195,6 +222,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_state
   - WordPress
   - Content
@@ -210,6 +240,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_site_type
   - WordPress
   - Content
@@ -225,6 +258,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_method_of_supply
   - WordPress
   - Content
@@ -240,6 +276,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_ownership_status
   - WordPress
   - Content
@@ -255,6 +294,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_business_sector
   - WordPress
   - Content
@@ -270,6 +312,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_food_option
   - WordPress
   - Content
@@ -285,6 +330,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - sw_listing_type
   - WordPress
   - Content
@@ -300,6 +348,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - ContentType
+  - WordPress
+  - Content
+  tags_raw:
   - content_type
   - WordPress
   - Content
@@ -315,6 +367,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - content_topic
   - WordPress
   - Content
@@ -330,6 +385,9 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - WordPress
+  - Content
+  tags_raw:
   - content_media_type
   - WordPress
   - Content
@@ -345,6 +403,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - Posts
+  - WordPress
+  - Content
+  tags_raw:
   - posts
   - WordPress
   - Content
@@ -360,6 +422,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - Pages
+  - WordPress
+  - Content
+  tags_raw:
   - pages
   - WordPress
   - Content
@@ -375,6 +441,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - Media
+  - WordPress
+  - Content
+  tags_raw:
   - media
   - WordPress
   - Content
@@ -390,6 +460,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - Categories
+  - WordPress
+  - Content
+  tags_raw:
   - categories
   - WordPress
   - Content
@@ -405,6 +479,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - Tags
+  - WordPress
+  - Content
+  tags_raw:
   - tags
   - WordPress
   - Content
@@ -420,6 +498,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - Comments
+  - WordPress
+  - Content
+  tags_raw:
   - comments
   - WordPress
   - Content
@@ -435,6 +517,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - User
+  - WordPress
+  - Content
+  tags_raw:
   - users
   - WordPress
   - Content
@@ -450,6 +536,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - Search
+  - WordPress
+  - Content
+  tags_raw:
   - search
   - WordPress
   - Content
@@ -465,6 +555,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - Types
+  - WordPress
+  - Content
+  tags_raw:
   - types
   - WordPress
   - Content
@@ -495,6 +589,10 @@ apis:
   humanURL: https://www.globalp.com/wp-json/
   baseURL: https://www.globalp.com/wp-json
   tags:
+  - Status
+  - WordPress
+  - Content
+  tags_raw:
   - statuses
   - WordPress
   - Content
