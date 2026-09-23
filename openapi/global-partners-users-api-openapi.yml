@@ -1,19 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Global Partners LP Authors API
+  title: Global Partners LP Authors Users API
   version: wp/v2
   summary: Authors from the public WordPress REST API served by www.globalp.com.
-  description: 'Post-author records exposed by the WordPress REST API.
-
-
-    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
-    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
-    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
-
-
-    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
-    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
-    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  description: Post-author records exposed by the WordPress REST API.
   contact:
     name: Global Partners LP
     url: https://www.globalp.com/contact-us
@@ -25,7 +15,7 @@ servers:
 - url: https://www.globalp.com/wp-json
   description: Production — www.globalp.com WordPress REST API
 tags:
-- name: users
+- name: Users
   description: Post-author records exposed by the WordPress REST API.
 paths:
   /wp/v2/users:
@@ -34,7 +24,7 @@ paths:
       summary: List authors
       description: Post-author records exposed by the WordPress REST API.
       tags:
-      - users
+      - Users
       parameters:
       - name: context
         in: query
@@ -143,8 +133,7 @@ paths:
           type: array
           items:
             type: string
-        description: Limit result set to users matching at least one specific capability provided. Accepts csv list or single
-          capability.
+        description: Limit result set to users matching at least one specific capability provided. Accepts csv list or single capability.
       - name: who
         in: query
         required: false
@@ -227,10 +216,9 @@ paths:
     post:
       operationId: createUsers
       summary: Create a author record
-      description: Create a author record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Create a author record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - users
+      - Users
       requestBody:
         required: true
         content:
@@ -309,10 +297,9 @@ paths:
     get:
       operationId: getUsers
       summary: Retrieve one author record
-      description: Retrieve one author record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Retrieve one author record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - users
+      - Users
       parameters:
       - name: id
         in: path
@@ -353,10 +340,9 @@ paths:
     post:
       operationId: updateUsers
       summary: Update one author record
-      description: Update one author record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Update one author record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - users
+      - Users
       parameters:
       - name: id
         in: path
@@ -447,10 +433,9 @@ paths:
     delete:
       operationId: deleteUsers
       summary: Delete one author record
-      description: Delete one author record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Delete one author record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - users
+      - Users
       parameters:
       - name: id
         in: path
@@ -500,22 +485,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      description: The WordPress REST API error envelope.
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
-        message:
-          type: string
-          description: Human-readable error message.
-        data:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: The HTTP status code.
     Users:
       type: object
       properties:
@@ -567,11 +536,25 @@ components:
                 properties:
                   href:
                     type: string
-      description: A Author record as returned by the public, unauthenticated collection endpoint. Structure derived from
-        a live response on 2026-09-12; no values are reproduced.
+      description: A Author record as returned by the public, unauthenticated collection endpoint. Structure derived from a live response on 2026-09-12; no values are reproduced.
+    Error:
+      type: object
+      description: The WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: The HTTP status code.
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
-        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

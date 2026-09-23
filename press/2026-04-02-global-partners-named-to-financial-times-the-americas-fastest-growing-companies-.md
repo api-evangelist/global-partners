@@ -2,7 +2,9 @@
 title: Global Partners Named to Financial Times’ The Americas’ Fastest Growing Companies
   2026 List
 url: https://www.globalp.com/who-we-are/news-media/global-partners-named-to-financial-times-the-americas-fastest-growing-companies-2026-list
-date: '2026-04-02'
+published: ''
+date_basis: harvested
+harvested: '2026-04-02'
 author: Casey Jackson
 feed_url: http://www.globalp.com/news/feed
 ---

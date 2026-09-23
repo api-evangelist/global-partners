@@ -1,7 +1,9 @@
 ---
 title: Global Partners Reports Fourth-Quarter and Full-Year 2025 Financial Results
 url: https://www.globalp.com/who-we-are/news-media/global-partners-reports-fourth-quarter-and-full-year-2025-financial-results
-date: '2026-02-27'
+published: ''
+date_basis: harvested
+harvested: '2026-02-27'
 author: Casey Jackson
 feed_url: http://www.globalp.com/news/feed
 ---

@@ -1,19 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Global Partners LP Tags API
   version: wp/v2
   summary: Tags from the public WordPress REST API served by www.globalp.com.
-  description: 'WordPress tag taxonomy.
-
-
-    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
-    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
-    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
-
-
-    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
-    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
-    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  description: WordPress tag taxonomy.
   contact:
     name: Global Partners LP
     url: https://www.globalp.com/contact-us
@@ -25,7 +15,7 @@ servers:
 - url: https://www.globalp.com/wp-json
   description: Production — www.globalp.com WordPress REST API
 tags:
-- name: tags
+- name: Tags
   description: WordPress tag taxonomy.
 paths:
   /wp/v2/tags:
@@ -34,7 +24,7 @@ paths:
       summary: List tags
       description: WordPress tag taxonomy.
       tags:
-      - tags
+      - Tags
       parameters:
       - name: context
         in: query
@@ -153,10 +143,9 @@ paths:
     post:
       operationId: createTags
       summary: Create a tag record
-      description: Create a tag record. Requires an authenticated WordPress user with the relevant capability; anonymous requests
-        receive 401 rest_forbidden.
+      description: Create a tag record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - tags
+      - Tags
       requestBody:
         required: true
         content:
@@ -197,10 +186,9 @@ paths:
     get:
       operationId: getTags
       summary: Retrieve one tag record
-      description: Retrieve one tag record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Retrieve one tag record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - tags
+      - Tags
       parameters:
       - name: id
         in: path
@@ -237,10 +225,9 @@ paths:
     post:
       operationId: updateTags
       summary: Update one tag record
-      description: Update one tag record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Update one tag record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - tags
+      - Tags
       parameters:
       - name: id
         in: path
@@ -293,10 +280,9 @@ paths:
     delete:
       operationId: deleteTags
       summary: Delete one tag record
-      description: Delete one tag record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Delete one tag record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - tags
+      - Tags
       parameters:
       - name: id
         in: path
@@ -356,5 +342,4 @@ components:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
-        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

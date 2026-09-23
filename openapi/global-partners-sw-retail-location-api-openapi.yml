@@ -1,20 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Global Partners LP Retail Locations API
+  title: Global Partners LP Retail Locations Sw Retail Location API
   version: wp/v2
   summary: Retail Locations from the public WordPress REST API served by www.globalp.com.
-  description: 'Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh, XtraMart
-    and branded-dealer network.
-
-
-    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
-    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
-    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
-
-
-    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
-    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
-    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  description: Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh, XtraMart and branded-dealer network.
   contact:
     name: Global Partners LP
     url: https://www.globalp.com/contact-us
@@ -27,15 +16,13 @@ servers:
   description: Production — www.globalp.com WordPress REST API
 tags:
 - name: sw_retail_location
-  description: Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh, XtraMart
-    and branded-dealer network.
+  description: Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh, XtraMart and branded-dealer network.
 paths:
   /wp/v2/sw_retail_location:
     get:
       operationId: listSwRetailLocation
       summary: List retail locations
-      description: Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh,
-        XtraMart and branded-dealer network.
+      description: Global Partners retail fuel and convenience locations (846 published) across its Alltown, Alltown Fresh, XtraMart and branded-dealer network.
       tags:
       - sw_retail_location
       parameters:
@@ -307,8 +294,7 @@ paths:
     post:
       operationId: createSwRetailLocation
       summary: Create a retail location record
-      description: Create a retail location record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Create a retail location record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_retail_location
       requestBody:
@@ -407,8 +393,7 @@ paths:
     get:
       operationId: getSwRetailLocation
       summary: Retrieve one retail location record
-      description: Retrieve one retail location record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Retrieve one retail location record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_retail_location
       parameters:
@@ -457,8 +442,7 @@ paths:
     post:
       operationId: updateSwRetailLocation
       summary: Update one retail location record
-      description: Update one retail location record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Update one retail location record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_retail_location
       parameters:
@@ -569,8 +553,7 @@ paths:
     delete:
       operationId: deleteSwRetailLocation
       summary: Delete one retail location record
-      description: Delete one retail location record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Delete one retail location record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_retail_location
       parameters:
@@ -758,11 +741,9 @@ components:
                     type: string
                   templated:
                     type: boolean
-      description: A Retail Location record as returned by the public, unauthenticated collection endpoint. Structure derived
-        from a live response on 2026-09-12; no values are reproduced.
+      description: A Retail Location record as returned by the public, unauthenticated collection endpoint. Structure derived from a live response on 2026-09-12; no values are reproduced.
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
-        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

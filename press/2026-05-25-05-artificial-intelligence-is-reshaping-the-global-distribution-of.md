@@ -1,7 +1,9 @@
 ---
 title: Artificial intelligence is reshaping the global distribution of ...
 url: https://www.instagram.com/p/DYWsJ6wIns4/
-date: '2026-05-25'
+published: ''
+date_basis: harvested
+harvested: '2026-05-25'
 query: '"Global Partners" press release artificial intelligence'
 position: 5
 source: serpapi-google

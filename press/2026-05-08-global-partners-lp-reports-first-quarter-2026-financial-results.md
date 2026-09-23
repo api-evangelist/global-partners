@@ -1,7 +1,9 @@
 ---
 title: Global Partners LP Reports First-Quarter 2026 Financial Results
 url: https://www.globalp.com/who-we-are/news-media/global-partners-lp-reports-first-quarter-2026-financial-results
-date: '2026-05-08'
+published: ''
+date_basis: harvested
+harvested: '2026-05-08'
 author: Casey Jackson
 feed_url: http://www.globalp.com/news/feed
 ---

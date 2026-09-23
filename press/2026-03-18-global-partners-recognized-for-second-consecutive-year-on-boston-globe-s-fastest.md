@@ -2,7 +2,9 @@
 title: Global Partners Recognized for Second Consecutive Year on Boston Globe’s Fastest-Growing
   Companies List
 url: https://www.globalp.com/who-we-are/news-media/global-partners-recognized-for-second-consecutive-year-on-boston-globes-fastest-growing-companies-list
-date: '2026-03-18'
+published: ''
+date_basis: harvested
+harvested: '2026-03-18'
 author: Casey Jackson
 feed_url: http://www.globalp.com/news/feed
 ---

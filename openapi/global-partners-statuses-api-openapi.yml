@@ -1,19 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Global Partners LP Post Statuses API
   version: wp/v2
   summary: Post Statuses from the public WordPress REST API served by www.globalp.com.
-  description: 'The post-status registry.
-
-
-    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
-    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
-    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
-
-
-    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
-    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
-    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  description: The post-status registry.
   contact:
     name: Global Partners LP
     url: https://www.globalp.com/contact-us
@@ -25,7 +15,7 @@ servers:
 - url: https://www.globalp.com/wp-json
   description: Production — www.globalp.com WordPress REST API
 tags:
-- name: statuses
+- name: Statuses
   description: The post-status registry.
 paths:
   /wp/v2/statuses:
@@ -34,7 +24,7 @@ paths:
       summary: List post statuses
       description: The post-status registry.
       tags:
-      - statuses
+      - Statuses
       parameters:
       - name: context
         in: query
@@ -64,10 +54,9 @@ paths:
     get:
       operationId: getStatuses
       summary: Retrieve one post statuse record
-      description: Retrieve one post statuse record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Retrieve one post statuse record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - statuses
+      - Statuses
       parameters:
       - name: status
         in: path
@@ -146,11 +135,9 @@ components:
                 properties:
                   href:
                     type: string
-      description: A Post Statuse record as returned by the public, unauthenticated collection endpoint. Structure derived
-        from a live response on 2026-09-12; no values are reproduced.
+      description: A Post Statuse record as returned by the public, unauthenticated collection endpoint. Structure derived from a live response on 2026-09-12; no values are reproduced.
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
-        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

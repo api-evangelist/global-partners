@@ -2,7 +2,9 @@
 title: Global Partners Fuels New Partnership with Hackensack Meridian Health, Driving
   Care Across the Region
 url: https://www.globalp.com/who-we-are/news-media/global-partners-fuels-new-partnership-with-hackensack-meridian-health-driving-care-across-the-region
-date: '2026-03-25'
+published: ''
+date_basis: harvested
+harvested: '2026-03-25'
 author: Casey Jackson
 feed_url: http://www.globalp.com/news/feed
 ---

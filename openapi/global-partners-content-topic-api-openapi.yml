@@ -1,19 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Global Partners LP Content Topics API
+  title: Global Partners LP Content Topics Content Topic API
   version: wp/v2
   summary: Content Topics from the public WordPress REST API served by www.globalp.com.
-  description: 'Editorial topic taxonomy applied to news and media posts.
-
-
-    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
-    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
-    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
-
-
-    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
-    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
-    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  description: Editorial topic taxonomy applied to news and media posts.
   contact:
     name: Global Partners LP
     url: https://www.globalp.com/contact-us
@@ -172,8 +162,7 @@ paths:
     post:
       operationId: createContentTopic
       summary: Create a content topic record
-      description: Create a content topic record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Create a content topic record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - content_topic
       requestBody:
@@ -223,8 +212,7 @@ paths:
     get:
       operationId: getContentTopic
       summary: Retrieve one content topic record
-      description: Retrieve one content topic record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Retrieve one content topic record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - content_topic
       parameters:
@@ -267,8 +255,7 @@ paths:
     post:
       operationId: updateContentTopic
       summary: Update one content topic record
-      description: Update one content topic record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Update one content topic record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - content_topic
       parameters:
@@ -330,8 +317,7 @@ paths:
     delete:
       operationId: deleteContentTopic
       summary: Delete one content topic record
-      description: Delete one content topic record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Delete one content topic record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - content_topic
       parameters:
@@ -464,11 +450,9 @@ components:
                     type: string
                   templated:
                     type: boolean
-      description: A Content Topic record as returned by the public, unauthenticated collection endpoint. Structure derived
-        from a live response on 2026-09-12; no values are reproduced.
+      description: A Content Topic record as returned by the public, unauthenticated collection endpoint. Structure derived from a live response on 2026-09-12; no values are reproduced.
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
-        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

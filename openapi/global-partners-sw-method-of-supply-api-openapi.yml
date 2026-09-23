@@ -1,19 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Global Partners LP Methods of Supply API
+  title: Global Partners LP Methods of Supply Sw Method Of Supply API
   version: wp/v2
   summary: Methods of Supply from the public WordPress REST API served by www.globalp.com.
-  description: 'Method-of-supply taxonomy applied to terminals.
-
-
-    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
-    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
-    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
-
-
-    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
-    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
-    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  description: Method-of-supply taxonomy applied to terminals.
   contact:
     name: Global Partners LP
     url: https://www.globalp.com/contact-us
@@ -172,8 +162,7 @@ paths:
     post:
       operationId: createSwMethodOfSupply
       summary: Create a methods of supply record
-      description: Create a methods of supply record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Create a methods of supply record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_method_of_supply
       requestBody:
@@ -220,8 +209,7 @@ paths:
     get:
       operationId: getSwMethodOfSupply
       summary: Retrieve one methods of supply record
-      description: Retrieve one methods of supply record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Retrieve one methods of supply record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_method_of_supply
       parameters:
@@ -264,8 +252,7 @@ paths:
     post:
       operationId: updateSwMethodOfSupply
       summary: Update one methods of supply record
-      description: Update one methods of supply record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Update one methods of supply record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_method_of_supply
       parameters:
@@ -324,8 +311,7 @@ paths:
     delete:
       operationId: deleteSwMethodOfSupply
       summary: Delete one methods of supply record
-      description: Delete one methods of supply record. Requires an authenticated WordPress user with the relevant capability;
-        anonymous requests receive 401 rest_forbidden.
+      description: Delete one methods of supply record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_method_of_supply
       parameters:
@@ -371,22 +357,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      description: The WordPress REST API error envelope.
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
-        message:
-          type: string
-          description: Human-readable error message.
-        data:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: The HTTP status code.
     SwMethodOfSupply:
       type: object
       properties:
@@ -456,11 +426,25 @@ components:
                     type: string
                   templated:
                     type: boolean
-      description: A Methods of Supply record as returned by the public, unauthenticated collection endpoint. Structure derived
-        from a live response on 2026-09-12; no values are reproduced.
+      description: A Methods of Supply record as returned by the public, unauthenticated collection endpoint. Structure derived from a live response on 2026-09-12; no values are reproduced.
+    Error:
+      type: object
+      description: The WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: The HTTP status code.
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
-        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

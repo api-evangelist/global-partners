@@ -1,19 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Global Partners LP News Posts API
   version: wp/v2
   summary: News Posts from the public WordPress REST API served by www.globalp.com.
-  description: 'Global Partners news and media releases published on globalp.com.
-
-
-    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
-    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
-    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
-
-
-    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
-    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
-    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  description: Global Partners news and media releases published on globalp.com.
   contact:
     name: Global Partners LP
     url: https://www.globalp.com/contact-us
@@ -25,7 +15,7 @@ servers:
 - url: https://www.globalp.com/wp-json
   description: Production — www.globalp.com WordPress REST API
 tags:
-- name: posts
+- name: Posts
   description: Global Partners news and media releases published on globalp.com.
 paths:
   /wp/v2/posts:
@@ -34,7 +24,7 @@ paths:
       summary: List news posts
       description: Global Partners news and media releases published on globalp.com.
       tags:
-      - posts
+      - Posts
       parameters:
       - name: context
         in: query
@@ -354,10 +344,9 @@ paths:
     post:
       operationId: createPosts
       summary: Create a news post record
-      description: Create a news post record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Create a news post record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - posts
+      - Posts
       requestBody:
         required: true
         content:
@@ -489,10 +478,9 @@ paths:
     get:
       operationId: getPosts
       summary: Retrieve one news post record
-      description: Retrieve one news post record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Retrieve one news post record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - posts
+      - Posts
       parameters:
       - name: id
         in: path
@@ -545,10 +533,9 @@ paths:
     post:
       operationId: updatePosts
       summary: Update one news post record
-      description: Update one news post record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Update one news post record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - posts
+      - Posts
       parameters:
       - name: id
         in: path
@@ -692,10 +679,9 @@ paths:
     delete:
       operationId: deletePosts
       summary: Delete one news post record
-      description: Delete one news post record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Delete one news post record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - posts
+      - Posts
       parameters:
       - name: id
         in: path
@@ -942,11 +928,9 @@ components:
                     type: string
                   templated:
                     type: boolean
-      description: A News Post record as returned by the public, unauthenticated collection endpoint. Structure derived from
-        a live response on 2026-09-12; no values are reproduced.
+      description: A News Post record as returned by the public, unauthenticated collection endpoint. Structure derived from a live response on 2026-09-12; no values are reproduced.
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
-        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

@@ -1,19 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Global Partners LP Pages API
   version: wp/v2
   summary: Pages from the public WordPress REST API served by www.globalp.com.
-  description: 'Published website pages.
-
-
-    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
-    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
-    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
-
-
-    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
-    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
-    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  description: Published website pages.
   contact:
     name: Global Partners LP
     url: https://www.globalp.com/contact-us
@@ -25,7 +15,7 @@ servers:
 - url: https://www.globalp.com/wp-json
   description: Production — www.globalp.com WordPress REST API
 tags:
-- name: pages
+- name: Pages
   description: Published website pages.
 paths:
   /wp/v2/pages:
@@ -34,7 +24,7 @@ paths:
       summary: List pages
       description: Published website pages.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: context
         in: query
@@ -278,10 +268,9 @@ paths:
     post:
       operationId: createPages
       summary: Create a page record
-      description: Create a page record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Create a page record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - pages
+      - Pages
       requestBody:
         required: true
         content:
@@ -377,10 +366,9 @@ paths:
     get:
       operationId: getPages
       summary: Retrieve one page record
-      description: Retrieve one page record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Retrieve one page record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: id
         in: path
@@ -433,10 +421,9 @@ paths:
     post:
       operationId: updatePages
       summary: Update one page record
-      description: Update one page record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Update one page record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: id
         in: path
@@ -544,10 +531,9 @@ paths:
     delete:
       operationId: deletePages
       summary: Delete one page record
-      description: Delete one page record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Delete one page record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
-      - pages
+      - Pages
       parameters:
       - name: id
         in: path
@@ -591,22 +577,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      description: The WordPress REST API error envelope.
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
-        message:
-          type: string
-          description: Human-readable error message.
-        data:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: The HTTP status code.
     Pages:
       type: object
       properties:
@@ -764,11 +734,25 @@ components:
                     type: string
                   templated:
                     type: boolean
-      description: A Page record as returned by the public, unauthenticated collection endpoint. Structure derived from a
-        live response on 2026-09-12; no values are reproduced.
+      description: A Page record as returned by the public, unauthenticated collection endpoint. Structure derived from a live response on 2026-09-12; no values are reproduced.
+    Error:
+      type: object
+      description: The WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: The HTTP status code.
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
-        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

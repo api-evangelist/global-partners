@@ -1,20 +1,9 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Global Partners LP Terminals API
+  title: Global Partners LP Terminals Sw Terminal API
   version: wp/v2
   summary: Terminals from the public WordPress REST API served by www.globalp.com.
-  description: 'Global Partners liquid-energy terminal locations (157 published) with the products, services, supply methods
-    and states each terminal is tagged with.
-
-
-    This contract was derived faithfully from Global Partners LP''s own live WordPress REST API discovery document at https://www.globalp.com/wp-json/
-    on 2026-09-12. Every path, method, parameter name, type, description, enum and default below is copied from that document;
-    response schemas are inferred from the structure of real unauthenticated responses. Nothing is invented.
-
-
-    Read operations on this collection are public and unauthenticated. Write operations are present in the provider''s route
-    table but are capability-gated: an anonymous request returns HTTP 401 `rest_forbidden`. Global Partners publishes no developer
-    program, no API keys and no API documentation; this is the site''s platform API, not a supported product.'
+  description: Global Partners liquid-energy terminal locations (157 published) with the products, services, supply methods and states each terminal is tagged with.
   contact:
     name: Global Partners LP
     url: https://www.globalp.com/contact-us
@@ -27,15 +16,13 @@ servers:
   description: Production — www.globalp.com WordPress REST API
 tags:
 - name: sw_terminal
-  description: Global Partners liquid-energy terminal locations (157 published) with the products, services, supply methods
-    and states each terminal is tagged with.
+  description: Global Partners liquid-energy terminal locations (157 published) with the products, services, supply methods and states each terminal is tagged with.
 paths:
   /wp/v2/sw_terminal:
     get:
       operationId: listSwTerminal
       summary: List terminals
-      description: Global Partners liquid-energy terminal locations (157 published) with the products, services, supply methods
-        and states each terminal is tagged with.
+      description: Global Partners liquid-energy terminal locations (157 published) with the products, services, supply methods and states each terminal is tagged with.
       tags:
       - sw_terminal
       parameters:
@@ -295,8 +282,7 @@ paths:
     post:
       operationId: createSwTerminal
       summary: Create a terminal record
-      description: Create a terminal record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Create a terminal record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_terminal
       requestBody:
@@ -390,8 +376,7 @@ paths:
     get:
       operationId: getSwTerminal
       summary: Retrieve one terminal record
-      description: Retrieve one terminal record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Retrieve one terminal record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_terminal
       parameters:
@@ -440,8 +425,7 @@ paths:
     post:
       operationId: updateSwTerminal
       summary: Update one terminal record
-      description: Update one terminal record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Update one terminal record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_terminal
       parameters:
@@ -547,8 +531,7 @@ paths:
     delete:
       operationId: deleteSwTerminal
       summary: Delete one terminal record
-      description: Delete one terminal record. Requires an authenticated WordPress user with the relevant capability; anonymous
-        requests receive 401 rest_forbidden.
+      description: Delete one terminal record. Requires an authenticated WordPress user with the relevant capability; anonymous requests receive 401 rest_forbidden.
       tags:
       - sw_terminal
       parameters:
@@ -594,22 +577,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    Error:
-      type: object
-      description: The WordPress REST API error envelope.
-      properties:
-        code:
-          type: string
-          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
-        message:
-          type: string
-          description: Human-readable error message.
-        data:
-          type: object
-          properties:
-            status:
-              type: integer
-              description: The HTTP status code.
     SwTerminal:
       type: object
       properties:
@@ -737,11 +704,25 @@ components:
                     type: string
                   templated:
                     type: boolean
-      description: A Terminal record as returned by the public, unauthenticated collection endpoint. Structure derived from
-        a live response on 2026-09-12; no values are reproduced.
+      description: A Terminal record as returned by the public, unauthenticated collection endpoint. Structure derived from a live response on 2026-09-12; no values are reproduced.
+    Error:
+      type: object
+      description: The WordPress REST API error envelope.
+      properties:
+        code:
+          type: string
+          description: Machine-readable error code, e.g. rest_forbidden, rest_post_invalid_id.
+        message:
+          type: string
+          description: Human-readable error message.
+        data:
+          type: object
+          properties:
+            status:
+              type: integer
+              description: The HTTP status code.
   securitySchemes:
     applicationPassword:
       type: http
       scheme: basic
-      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization
-        endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.
+      description: WordPress application passwords (HTTP Basic). The site's discovery document advertises the authorization endpoint at https://www.globalp.com/wp-admin/authorize-application.php. Read operations require no credentials.

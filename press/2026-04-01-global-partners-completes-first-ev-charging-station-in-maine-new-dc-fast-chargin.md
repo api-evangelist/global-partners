@@ -2,7 +2,9 @@
 title: Global Partners Completes First EV Charging Station in Maine New DC Fast Charging
   site in Orono expands clean-energy access and supports Maine’s climate goals
 url: https://www.globalp.com/who-we-are/news-media/global-partners-completes-first-ev-charging-station-in-maine-new-dc-fast-charging-site-in-orono-expands-clean-energy-access-and-supports-maines-climate-goals
-date: '2026-04-01'
+published: ''
+date_basis: harvested
+harvested: '2026-04-01'
 author: Casey Jackson
 feed_url: http://www.globalp.com/news/feed
 ---

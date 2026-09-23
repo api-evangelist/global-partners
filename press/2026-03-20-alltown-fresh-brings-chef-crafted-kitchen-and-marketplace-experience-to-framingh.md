@@ -1,7 +1,9 @@
 ---
 title: Alltown Fresh® Brings Chef-Crafted Kitchen and Marketplace Experience to Framingham
 url: https://www.globalp.com/who-we-are/news-media/alltown-fresh-brings-chef-crafted-kitchen-and-marketplace-experience-to-framingham
-date: '2026-03-20'
+published: ''
+date_basis: harvested
+harvested: '2026-03-20'
 author: Casey Jackson
 feed_url: http://www.globalp.com/news/feed
 ---

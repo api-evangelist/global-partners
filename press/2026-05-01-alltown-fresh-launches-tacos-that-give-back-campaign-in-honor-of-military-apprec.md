@@ -2,7 +2,9 @@
 title: Alltown Fresh® Launches “Tacos That Give Back” Campaign in Honor of Military
   Appreciation Month
 url: https://www.globalp.com/who-we-are/news-media/alltown-fresh-launches-tacos-that-give-back-campaign-in-honor-of-military-appreciation-month
-date: '2026-05-01'
+published: ''
+date_basis: harvested
+harvested: '2026-05-01'
 author: Reid Lamberty
 feed_url: http://www.globalp.com/news/feed
 ---
