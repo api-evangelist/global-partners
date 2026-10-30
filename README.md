@@ -1,4 +1,4 @@
-# Global Partners LP (global-partners)
+# Global Partners LP
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,36 +64,106 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Global Partners LP is a leading independent owner, supplier, and operator of liquid energy terminals, fueling locations, and retail experiences. The company distributes gasoline, distillates, residual oil, renewable fuels, crude oil, and propane across the Northeast United States through an integrated network of terminals, gas stations, and convenience stores.
+Global Partners LP is a leading independent owner, supplier, and operator of liquid energy terminals, fueling locations, and retail experiences. The company distributes gasoline, distillates, residual oil, renewable fuels, crude oil, and propane across the Northeast United States through an integrated network of terminals, gas stations, and convenience stores. Global Partners publishes no developer program, no API keys and no API documentation, but www.globalp.com runs on WordPress and serves a fully public, unauthenticated WordPress REST API whose custom content types model the company itself: 157 terminals (sw_terminal), 846 retail locations (sw_retail_location), real-estate listings, leadership profiles, and the product, service, fuel-type, fuel-brand, retail-brand, state, supply-method and ownership-status taxonomies applied to them.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/global-partners/refs/heads/main/apis.yml)
+**Areas:** Energy · Fuel Distribution · Oil and Gas · Petroleum · Retail Fuel · Terminal · Fortune 500 · WordPress · Terminal Network · Retail Locations
 
-## Scope
+## Global Partners LP on APIs.io
 
-- **Type:** Index
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Global Partners LP is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/global-partners/](https://apis.io/providers/global-partners/)** — or go straight to one of the APIs or properties below.
 
-## Tags:
+### APIs (1)
 
- - Energy, Fuel Distribution, Oil and Gas, Petroleum, Retail Fuel, Terminals
+- [Global Partners LP Website (WordPress REST)](https://apis.io/apis/global-partners/globalp-com-website-wordpress-rest/) — The public WordPress REST API (wp-json) of the Global Partners LP website at www.globalp.com: the route index of the site's content management system,…
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-21
-- **Modified:** 2026-04-28
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### MCP servers (1)
 
-No public developer APIs have been documented for Global Partners LP. The company operates a customer-facing GlobalCONNECT portal for fleet and wholesale customers, but no public REST API or OpenAPI specification has been published.
+Model Context Protocol servers that expose the API to agents.
 
-## Common Properties
+- [Global Partners LP (candidate MCP tools)](https://apis.io/servers/global-partners/global-partners-lp-candidate-mcp-tools/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Global Partners Authentication](https://apis.io/security/global-partners/global-partners-authentication/)
+- [Global Partners Domain Security](https://apis.io/security/global-partners/global-partners-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Global Partners Plans Pricing](https://apis.io/plans/global-partners/global-partners-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Global Partners Rate Limits](https://apis.io/rate-limits/global-partners/global-partners-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://www.globalp.com)
-- [Customer Portal](https://www.globalp.com/globalconnect/)
+- [Support](https://www.globalp.com/contact-us)
+- [Blog](https://www.globalp.com/feed)
+- [Terms of service](https://www.globalp.com/terms-of-use)
+- [Privacy policy](https://www.globalp.com/privacy-policy)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
+**Kin Score 18.9** — emerging · rubric 0.24.0 · scored 2026-10-17
 
-**Email:** info@apievangelist.com
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 0.0 |
+| Developer ergonomics | 30.4 |
+| Access clarity | 27.6 |
+
+**Agent readiness 17.1** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.5** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/global-partners/](https://apis.io/providers/global-partners/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Global Partners LP: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/global-partners/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
